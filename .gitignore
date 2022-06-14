@@ -3,4 +3,4 @@ venv
 staticfiles
 db.sqlite3
 secret_key
-dumpdata.json
+
