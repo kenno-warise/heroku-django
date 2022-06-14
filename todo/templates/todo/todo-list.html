@@ -4,7 +4,7 @@
 <h1>Todo List</h1>
 <br>
 {% if todos %}
-  <ul>
+  <ul class="todo-ul">
     {% for todo in todos %}
     {{ todo.created_at }}
     <li><strong>{{ todo.title }}</strong></li>

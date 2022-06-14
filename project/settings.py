@@ -135,7 +135,12 @@ try:
 
     DEBUG = True
 except:
-    import django_heroku
+    pass
+    
 
-    django_heroku.settings(locals())
+# heroku settings. DATABASE, SECRET_KEY, STATIC_ROOT, WhiteNose Aout Set
 
+import django_heroku
+
+django_heroku.settings(locals())
+    
