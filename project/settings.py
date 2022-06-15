@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_cleanup.apps.CleanupConfig', # アップロードされたファイルURLが削除された時に本体も自動で削除される。
     'todo.apps.TodoConfig', # 個々の設定がないと、テンプレートを参照できないでエラーとなる。
 ]
 
@@ -121,6 +122,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Media files
+
+MEDIA_URL = '/media/'
+
+# MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -134,6 +141,10 @@ try:
     SECRET_KEY = secret_key
 
     DEBUG = True
+
+    # MEDIA_URL = '/media/'
+
+    MEDIA_ROOT = BASE_DIR / 'media'
 except:
     pass
     
@@ -143,4 +154,4 @@ except:
 import django_heroku
 
 django_heroku.settings(locals())
-    
+
