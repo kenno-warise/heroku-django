@@ -127,7 +127,7 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -155,7 +155,6 @@ if not DEBUG:
     DROPBOX_OAUTH2_TOKEN = 'sl.BJ6ZcvxYoFyP8_CxlE_Nu6ls9Rm9RUPj6H7F39mM5OJD2-MSilxvTPexEjop7_ktAVrEtJLcI8Dr_F3gBOdAYklEn8eFQZ7bTHEbmK9G497KuLKGILdMvvuxZ5OsppERhU22hMg'
     DROPBOX_ROOT_PATH = 'media'
     print('mediaルート', MEDIA_ROOT)
-    print('test')
 
 
 # heroku settings. DATABASE, SECRET_KEY, STATIC_ROOT, WhiteNose Aout Set
