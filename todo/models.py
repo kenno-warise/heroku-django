@@ -6,7 +6,7 @@ class Post(models.Model):
     title = models.CharField('タイトル', max_length=100)
     file_dir = models.FileField(
             upload_to='csv',
-            validators=[FileExtensionValidator(['csv',])],
+            # validators=[FileExtensionValidator(['csv',])],
             null=True,
             blank=True
     )

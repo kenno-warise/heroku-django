@@ -2,3 +2,5 @@ django==3.2.13
 django-heroku
 gunicorn
 django-cleanup
+dropbox
+django-storages
