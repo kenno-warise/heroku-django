@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_cleanup.apps.CleanupConfig', # アップロードされたファイルURLが削除された時に本体も自動で削除される。
     'todo.apps.TodoConfig', # 個々の設定がないと、テンプレートを参照できないでエラーとなる。
-    # 'storages',
 ]
 
 MIDDLEWARE = [
@@ -142,12 +141,7 @@ try:
     SECRET_KEY = secret_key
 
     DEBUG = True
-    
-    # Media files
 
-    MEDIA_URL = '/media/'
-
-    MEDIA_ROOT = BASE_DIR / 'media'
 except:
     pass
 
@@ -155,14 +149,9 @@ except:
 if not DEBUG:
     import os
 
-    # heroku-dynoに補完してある環境変数からアクセストークンを取得
-    DROPBOX_TOKEN = os.environ['DROPBOX_TOKEN']
-
     DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-    DROPBOX_OAUTH2_TOKEN = DROPBOX_TOKEN
+    DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_TOKEN'] # Herokuの環境変数から取得
     DROPBOX_ROOT_PATH = '/media/'
-    print('mediaルート', MEDIA_ROOT)
-
 
 # heroku settings. DATABASE, SECRET_KEY, STATIC_ROOT, WhiteNose Aout Set
 
