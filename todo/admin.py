@@ -12,6 +12,9 @@ class PostAdmin(admin.ModelAdmin):
         if not settings.DEBUG:
             if obj.file_dir:
                 print('file=True')
+                default_storage.client._oauth2_access_token = ''
+                default_storage.client._oauth2_refresh_token = settings.DROPBOX_OAUTH2_TOKEN
+                default_storage.client._app_key = settings.DROPBOX_KEY
                 print(default_storage.client.__dict__)
             else:
                 print('file=False')
