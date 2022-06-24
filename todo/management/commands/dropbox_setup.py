@@ -13,7 +13,7 @@ class Command(BaseCommand):
             except:
                 default_storage.client._oauth2_access_token = ''
 
-                oauth_refresh_token = settings.DROPBOX_REFRESH_TOKEN
+                oauth_refresh_token = settings.DROPBOX_OAUTH2_TOKEN
                 dropbox_key = settings.DROPBOX_KEY
                 default_storage.client._oauth2_refresh_token = oauth_refresh_token
                 default_storage.client._app_key = dropbox_key
