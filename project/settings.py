@@ -150,8 +150,9 @@ if not DEBUG:
     import os
 
     DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-    DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_KEY'] # Herokuの環境変数から取得
+    DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_REFRESH_TOKEN'] # Herokuの環境変数から取得
     DROPBOX_ROOT_PATH = '/media/'
+    DROPBOX_KEY = os.environ['DROPBOX_KEY']
 
 # heroku settings. DATABASE, SECRET_KEY, STATIC_ROOT, WhiteNose Aout Set
 
