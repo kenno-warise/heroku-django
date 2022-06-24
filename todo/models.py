@@ -5,6 +5,7 @@ from django.core.validators import FileExtensionValidator
 class Post(models.Model):
     title = models.CharField('タイトル', max_length=100)
     file_dir = models.FileField(
+            'ファイル',
             upload_to='file',
             # validators=[FileExtensionValidator(['csv',])],
             null=True,
