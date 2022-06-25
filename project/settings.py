@@ -157,7 +157,7 @@ if not DEBUG:
 
     # SFTP server set
 
-    DEFUALT_FILE_STORAGE = 'storages.backends.sftpstorage.SFTPStorage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.sftpstorage.SFTPStorage'
 
     SFTP_STORAGE_HOST = 'zerofromlihgt.com'
     SFTP_STORAGE_ROOT = '/var/www/media/'
