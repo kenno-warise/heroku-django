@@ -2,5 +2,7 @@ venv
 *.pyc
 staticfiles
 db.sqlite3
-secret_key
+secret_keys.json
 media
+refresh.py
+refresh_token.sh
