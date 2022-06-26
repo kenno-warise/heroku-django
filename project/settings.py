@@ -140,7 +140,7 @@ try:
 
     with open(BASE_DIR/'secret_keys.json', 'r') as key:
         secret_key = json.load(key)
-    SECRET_KEY = secret_key
+    SECRET_KEY = secret_key['django_key']
 
     DEBUG = True
 
@@ -151,24 +151,10 @@ except:
 if not DEBUG:
     import os
 
-    # DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-    # DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_OAUTH2_TOKEN'] # Herokuの環境変数から取得
-    # DROPBOX_ROOT_PATH = '/media/'
+    DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+    DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_OAUTH2_TOKEN'] # Herokuの環境変数から取得
+    DROPBOX_ROOT_PATH = '/media/'
 
-    # SFTP server set
-
-    DEFAULT_FILE_STORAGE = 'storages.backends.sftpstorage.SFTPStorage'
-
-    SFTP_STORAGE_HOST = 'zerofromlihgt.com'
-    SFTP_STORAGE_ROOT = '/var/www/media/'
-    SFTP_STORAGE_PAEAMS = {
-            'port': os.environ['PORT'],
-            'username': os.environ['USERNAME'],
-            'password': os.environ['PASSWORD'],
-            'allow_agent': False,
-            'look_for_keys': False,
-    }
-    SFTP_STORAGE_INTERACTIVE = False
 
 # heroku settings. DATABASE, SECRET_KEY, STATIC_ROOT, WhiteNose Aout Set
 
