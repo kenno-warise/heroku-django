@@ -1,5 +1,5 @@
 django==3.2.10
-django-heroku
+django-on-heroku
 gunicorn
 django-cleanup
 dropbox

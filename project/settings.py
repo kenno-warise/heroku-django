@@ -158,7 +158,7 @@ if not DEBUG:
 
 # heroku settings. DATABASE, SECRET_KEY, STATIC_ROOT, WhiteNose Aout Set
 
-import django_heroku
+import django_on_heroku
 
-django_heroku.settings(locals())
+django_on_heroku.settings(locals())
 
