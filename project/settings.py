@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -122,6 +122,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 # Media files
 
 MEDIA_URL = '/media/'
@@ -136,17 +138,70 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ローカルサーバーでの起動で必要な変数
 
 try:
-    import json
-
+    # import json
+    """
     with open(BASE_DIR/'secret_keys.json', 'r') as key:
         secret_key = json.load(key)
     SECRET_KEY = secret_key['django_key']
+    
 
     DEBUG = True
-
+    """
 except:
     pass
 
+
+import os
+"""
+path = '.env'
+
+if os.path.isfile(path):
+    import json
+
+    with open('secret_keys.json', 'r') as key:
+        secret_key = json.load(key)
+
+    SECRET_KEY = secret_key['django_key']
+    DEBUG=True
+else:
+"""
+# django-storagesの設定 by Dropbox
+DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_OAUTH2_TOKEN'] # Herokuの環境変数から取得
+DROPBOX_ROOT_PATH = '/media/'
+
+# heroku settings. DATABASE, SECRET_KEY, STATIC_ROOT, WhiteNose Aout Set
+
+import django_on_heroku
+
+django_on_heroku.settings(locals())
+
+path = '.env'
+
+if not os.path.isfile(path):
+    DEBUG = False
+
+#print('dropboxトークン', DROPBOX_OAUTH2_TOKNE)
+print('デバッグ', DEBUG)
+print('データベース', DATABASES)
+print('トークン', DROPBOX_OAUTH2_TOKEN)
+print('シークレット', SECRET_KEY)
+
+"""
+    # SFTP server set
+
+    DEFAULT_FILE_STORAGE = 'storages.backends.sftpstorage.SFTPStorage'
+
+    SFTP_STORAGE_HOST = 'zerofromlihgt.com'
+    SFTP_STORAGE_ROOT = '/var/www/media/'
+    SFTP_STORAGE_PAEAMS = {
+            'port': os.environ['PORT'],
+            'username': os.environ['USERNAME'],
+            'password': os.environ['PASSWORD'],
+            'allow_agent': False,
+            'look_for_keys': False,
+    }
+    SFTP_STORAGE_INTERACTIVE = False
 
 if not DEBUG:
     import os
@@ -161,4 +216,4 @@ if not DEBUG:
 import django_on_heroku
 
 django_on_heroku.settings(locals())
-
+"""
