@@ -143,6 +143,8 @@ DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_OAUTH2_TOKEN'] # Herokuの環境変数から取得
 DROPBOX_ROOT_PATH = '/media/'
 
+print('herokuインポート前のデータベース', DATABASES)
+
 # heroku settings. DATABASE, SECRET_KEY, STATIC_ROOT, WhiteNose Aout Set
 
 import django_on_heroku
