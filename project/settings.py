@@ -135,37 +135,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# ローカルサーバーでの起動で必要な変数
-
-try:
-    # import json
-    """
-    with open(BASE_DIR/'secret_keys.json', 'r') as key:
-        secret_key = json.load(key)
-    SECRET_KEY = secret_key['django_key']
-    
-
-    DEBUG = True
-    """
-except:
-    pass
-
+# django-storagesの設定 by Dropbox
 
 import os
-"""
-path = '.env'
 
-if os.path.isfile(path):
-    import json
-
-    with open('secret_keys.json', 'r') as key:
-        secret_key = json.load(key)
-
-    SECRET_KEY = secret_key['django_key']
-    DEBUG=True
-else:
-"""
-# django-storagesの設定 by Dropbox
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_OAUTH2_TOKEN'] # Herokuの環境変数から取得
 DROPBOX_ROOT_PATH = '/media/'
@@ -203,17 +176,4 @@ print('シークレット', SECRET_KEY)
     }
     SFTP_STORAGE_INTERACTIVE = False
 
-if not DEBUG:
-    import os
-
-    DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-    DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_OAUTH2_TOKEN'] # Herokuの環境変数から取得
-    DROPBOX_ROOT_PATH = '/media/'
-
-
-# heroku settings. DATABASE, SECRET_KEY, STATIC_ROOT, WhiteNose Aout Set
-
-import django_on_heroku
-
-django_on_heroku.settings(locals())
 """
