@@ -1,1 +1,1 @@
-web: gunicorn project:wsgi
+web: gunicorn api_name:todo
