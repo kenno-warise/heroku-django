@@ -158,6 +158,7 @@ if not os.path.isfile(path):
 
 #print('dropboxトークン', DROPBOX_OAUTH2_TOKNE)
 print('ホスト', ALLOWED_HOSTS)
+print('スタティック', STATIC_URL)
 print('デバッグ', DEBUG)
 print('データベース', DATABASES)
 print('トークン', DROPBOX_OAUTH2_TOKEN)
