@@ -1,1 +1,1 @@
-web: gunicorn apl_name:todo
+web: gunicorn project.wsgi

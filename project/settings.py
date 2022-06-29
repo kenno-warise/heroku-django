@@ -157,6 +157,7 @@ if not os.path.isfile(path):
     DEBUG = False
 
 #print('dropboxトークン', DROPBOX_OAUTH2_TOKNE)
+print('ホスト', ALLOWED_HOSTS)
 print('デバッグ', DEBUG)
 print('データベース', DATABASES)
 print('トークン', DROPBOX_OAUTH2_TOKEN)
