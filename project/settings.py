@@ -122,7 +122,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = BASE_DIR / 'static'
+# STATIC_ROOT = BASE_DIR / 'static'
 
 # Media files
 
@@ -137,11 +137,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # django-storagesの設定 by Dropbox
 
-import os
-
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_OAUTH2_TOKEN'] # Herokuの環境変数から取得
 DROPBOX_ROOT_PATH = '/media/'
+
+try:
+    import os
+    DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_OAUTH2_TOKEN'] # Herokuの環境変数から取得
+except KeyError:
+    import json
+
+    with open('secret_keys.json', 'r') as key:
+        secret_key = json.load(key)
+
+    DROPBOX_OAUTH2_TOKEN = secret_key['DROPBOX_OAUTH2_TOKEN']
+    SECRET_KEY = secret_key['django_key']
 
 print('herokuインポート前のデータベース', DATABASES)
 
@@ -158,7 +167,7 @@ if not os.path.isfile(path):
 
 #print('dropboxトークン', DROPBOX_OAUTH2_TOKNE)
 print('ホスト', ALLOWED_HOSTS)
-print('スタティック', STATIC_URL)
+print('スタティック', STATIC_ROOT)
 print('デバッグ', DEBUG)
 print('データベース', DATABASES)
 print('トークン', DROPBOX_OAUTH2_TOKEN)
