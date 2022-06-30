@@ -128,7 +128,7 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -140,8 +140,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 DROPBOX_ROOT_PATH = '/media/'
 
+import os
+
 try:
-    import os
     DROPBOX_OAUTH2_TOKEN = os.environ['DROPBOX_OAUTH2_TOKEN'] # Herokuの環境変数から取得
 except KeyError:
     import json
@@ -152,7 +153,6 @@ except KeyError:
     DROPBOX_OAUTH2_TOKEN = secret_key['DROPBOX_OAUTH2_TOKEN']
     SECRET_KEY = secret_key['django_key']
 
-print('herokuインポート前のデータベース', DATABASES)
 
 # heroku settings. DATABASE, SECRET_KEY, STATIC_ROOT, WhiteNose Aout Set
 
@@ -160,18 +160,11 @@ import django_on_heroku
 
 django_on_heroku.settings(locals())
 
-path = '.env'
+path = 'venv'
 
-if not os.path.isfile(path):
+if not os.path.isdir(path):
     DEBUG = False
 
-#print('dropboxトークン', DROPBOX_OAUTH2_TOKNE)
-print('ホスト', ALLOWED_HOSTS)
-print('スタティック', STATIC_ROOT)
-print('デバッグ', DEBUG)
-print('データベース', DATABASES)
-print('トークン', DROPBOX_OAUTH2_TOKEN)
-print('シークレット', SECRET_KEY)
 
 """
     # SFTP server set
