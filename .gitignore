@@ -5,5 +5,5 @@ db.sqlite3
 secret_keys.json
 media
 refresh.py
-refresh_token.sh
+heroku_start.sh
 .env
