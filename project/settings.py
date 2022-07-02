@@ -128,8 +128,6 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
-# MEDIA_ROOT = BASE_DIR / 'media'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -159,6 +157,10 @@ except KeyError:
 import django_on_heroku
 
 django_on_heroku.settings(locals())
+
+
+# venvディレクトリが存在していればDEBUG=True
+# venvディレクトリが存在していなければDEBUG=False
 
 path = 'venv'
 
