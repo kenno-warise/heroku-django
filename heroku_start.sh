@@ -15,10 +15,11 @@ else
   echo '.envが存在しないので作成します。'
   # heroku addons:create heroku-postgresql:hobby-dev
   # echo 'DATABASE_URLの作成 OK!'
-  key=`python3 manage.py shell -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"`
+  # key=`python3 manage.py shell -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"`
+  key=`python3 refresh.py django`
   echo 'DjangoのSECRET_KEY再生成 OK!'
   heroku config:set SECRET_KEY=$key
-  token=`python3 refresh.py`
+  token=`python3 refresh.py dropbox`
   echo 'Dropboxのアクセストークン生成 OK!'
   heroku config:set DROPBOX_OAUTH2_TOKEN=$token
   branch=`git branch | grep '*' | tr ' ' '\n' | grep -v '*'`
