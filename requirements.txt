@@ -4,4 +4,3 @@ gunicorn
 django-cleanup
 dropbox
 django-storages
-paramiko
